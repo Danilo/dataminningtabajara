@@ -1,25 +1,24 @@
 <?php
 	$q=$_GET["q"];
-	$dbuser="root";
-	$dbname="data";
-	$dbpass="root";
-	$dbserver="localhost";
+	// $dbuser="nwdejxuilsjcjz";
+	// $dbname="de48857s2icssf";
+	// $dbpass="d5uuQd2byLFmaMym-qvR-SI7TI";
+	// $dbserver="ec2-54-204-43-200.compute-1.amazonaws.com";
 
 	$sql_query = "SELECT * FROM questionario";
 
-	$con = mysql_connect($dbserver, $dbuser,$dbpass);
+	$con = pg_connect("host=ec2-54-204-43-200.compute-1.amazonaws.com port=5432 dbname=de48857s2icssf user=nwdejxuilsjcjz password=d5uuQd2byLFmaMym-qvR-SI7TI");
 
-	if (!$con){ die('Could not connect: ' . mysql_error()); }
-	mysql_select_db($dbname, $con);
-	$result = mysql_query($sql_query);
+	if (!$con){ die ("Could not connect to server\n"); }
+	$result = pg_query($con, $sql_query);
 
 	echo "{\"cols\": [{\"id\":\"\",\"label\":\"Topping\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Slices\",\"pattern\":\"\",\"type\":\"number\"}],\"rows\": [ ";
 
-	$total_rows = mysql_num_rows($result);
+	$total_rows = pg_num_rows($result);
 
 	// sexo
 	if($q == "sexo"){
-		while($row = mysql_fetch_array($result)){
+		while($row = pg_fetch_array($result)){
 			$sexo_total++;
 
 			if($row['sexo'] == "masculino"){
@@ -33,7 +32,7 @@
 
 	// periodo
 	if($q == "periodo"){
-		while($row = mysql_fetch_array($result)){
+		while($row = pg_fetch_array($result)){
 			$periodo++;
 
 			if($row['cursoPeriodo'] == "noturno"){
@@ -47,7 +46,7 @@
 
 	// estado_civil
 	if($q == "estado_civil"){
-		while($row = mysql_fetch_array($result)){
+		while($row = pg_fetch_array($result)){
 			$estado_civil++;
 
 			if($row['estadoCivil'] == "solteiro"){
@@ -63,7 +62,7 @@
 
 	// nivel_informatica
 	if($q == "nivel_informatica"){
-		while($row = mysql_fetch_array($result)){
+		while($row = pg_fetch_array($result)){
 			$estado_civil++;
 
 			if($row['nvlInformatica'] == "basico"){
@@ -77,5 +76,5 @@
 		echo "{\"c\":[{\"v\":\"Basico\",\"f\":null},{\"v\":" . $basico . ",\"f\":null}]},{\"c\":[{\"v\":\"Intermediario\",\"f\":null},{\"v\":" . $intermediario . ",\"f\":null}]},{\"c\":[{\"v\":\"Avancado\",\"f\":null},{\"v\":" . $avancado . ",\"f\":null}]}";
 	}
 	echo " ] }";
-	mysql_close($con);
+	pg_close($con);
 ?>

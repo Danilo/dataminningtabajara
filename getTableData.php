@@ -1,22 +1,22 @@
 <?php
-	$dbuser="root";
-	$dbname="data";
-	$dbpass="root";
-	$dbserver="localhost";
+	// $dbuser="root";
+	// $dbname="data";
+	// $dbpass="root";
+	// $dbserver="localhost";
 
 	$sql_query = "SELECT * FROM questionario";
 
-	$con = mysql_connect($dbserver, $dbuser,$dbpass);
+	$con = pg_connect("host=ec2-54-204-43-200.compute-1.amazonaws.com port=5432 dbname=de48857s2icssf user=nwdejxuilsjcjz password=d5uuQd2byLFmaMym-qvR-SI7TI");
 
-	if (!$con){ die('Could not connect: ' . mysql_error()); }
-	mysql_select_db($dbname, $con);
-	$result = mysql_query($sql_query);
+	if (!$con){ die ("Could not connect to server\n"); }
+	$result = pg_query($con, $sql_query);
 
 	echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"sexo\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Data de Cadastro\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
 
-	$total_rows = mysql_num_rows($result);
+	$total_rows = pg_num_rows($result);
+
 	$row_num = 0;
-	while($row = mysql_fetch_array($result)){
+	while($row = pg_fetch_array($result)){
 		$row_num++;
 		if ($row_num == $total_rows){
 			echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['sexo'] . "\",\"f\":null},{\"v\":\"" . $row['dataCadastro'] . "\",\"f\":null}]}";
@@ -25,5 +25,5 @@
 		}
 	}
 	echo " ] }";
-	mysql_close($con);
+	pg_close($con);
 ?>
