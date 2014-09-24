@@ -18,6 +18,7 @@
 
 			var jsonTableData = $.ajax({
 				url: "getTableData.php",
+				data: "q="+data,
 				dataType:"json",
 				async: false
 			}).responseText;
