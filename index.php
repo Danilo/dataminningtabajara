@@ -27,15 +27,15 @@
 			var tableData = new google.visualization.DataTable(jsonTableData);
 
 			var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-			chart.draw(pieData, {width: 700, height: 500, chartArea: {left:"5%", top:"5%", width:"90%", height:"90%"}});
+			chart.draw(pieData, {legend: {textStyle: {color: '#FFFFFF'}}, backgroundColor:"none", width: 600, height: 500, chartArea: {left:"5%", top:"5%", width:"90%", height:"90%"}});
 
 			var table = new google.visualization.Table(document.getElementById('table_div'));
-			table.draw(tableData, {showRowNumber: true, alternatingRowStyle: true, page: 'enable', pageSize: 20});
+			table.draw(tableData, {width: 600, height: 500, showRowNumber: true, alternatingRowStyle: true, page: 'enable', pageSize: 20});
 		}
 		</script>
 	</head>
 
-	<body>
+	<body background="Elegant_Background-8.jpg">
 		<div id="header">
 			<form>
 				<select name="users" onchange="drawChart(this.value)">
@@ -48,8 +48,8 @@
 			</form>
 		</div>
 		<div id="main" style="background-color:#FF0000">
-			<div id="chart_div" style="width: 50%; float:left"></div>
-			<div id="table_div" style="width: 50%; float:right"></div>
+			<div id="chart_div" style="float:left"></div>
+			<div id="table_div" style="float:right; filter: alpha(opacity=65);"></div>
 		</div>
 	</body>
 </html>
