@@ -35,7 +35,7 @@
 		</script>
 	</head>
 
-	<body background="Elegant_Background-8.jpg">
+	<body background="Elegant_Background-8.jpg" background-size="cover">
 		<div id="header">
 			<form>
 				<select name="users" onchange="drawChart(this.value)">
