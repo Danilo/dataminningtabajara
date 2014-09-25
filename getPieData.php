@@ -101,9 +101,11 @@
 				$semconducao++;
 			} elseif($row['locomocao'] == "coletivo"){
 				$coletivo++;
+			}elseif($row['locomocao'] == "terceiros"){
+				$terceiros++;
 			}
 		}
-		echo "{\"c\":[{\"v\":\"Proprio\",\"f\":null},{\"v\":" . $proprio . ",\"f\":null}]},{\"c\":[{\"v\":\"Sem Conducao\",\"f\":null},{\"v\":" . $semconducao . ",\"f\":null}]},{\"c\":[{\"v\":\"Coletivo\",\"f\":null},{\"v\":" . $coletivo . ",\"f\":null}]}";
+		echo "{\"c\":[{\"v\":\"Proprio\",\"f\":null},{\"v\":" . $proprio . ",\"f\":null}]},{\"c\":[{\"v\":\"Sem Conducao\",\"f\":null},{\"v\":" . $semconducao . ",\"f\":null}]},{\"c\":[{\"v\":\"Coletivo\",\"f\":null},{\"v\":" . $coletivo . ",\"f\":null}]},{\"c\":[{\"v\":\"Terceiros\",\"f\":null},{\"v\":" . $terceiros . ",\"f\":null}]}";
 	}
 
 	echo " ] }";
