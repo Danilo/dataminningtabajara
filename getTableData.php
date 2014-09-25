@@ -89,6 +89,46 @@
 		}
 	}
 
+	// tem_filhos
+	if($q == "tem_filhos"){
+		$sql_query = "SELECT \"raAluno\", \"temFilhos\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Filhos\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['temFilhos'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['temFilhos'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
+	// locomocao
+	if($q == "locomocao"){
+		$sql_query = "SELECT \"raAluno\", \"locomocao\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Locomocao\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['locomocao'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['locomocao'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
 	echo " ] }";
 	pg_close($con);
 ?>

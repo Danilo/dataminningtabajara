@@ -63,7 +63,7 @@
 	// nivel_informatica
 	if($q == "nivel_informatica"){
 		while($row = pg_fetch_array($result)){
-			$estado_civil++;
+			$nivel_informatica++;
 
 			if($row['nvlInformatica'] == "basico"){
 				$basico++;
@@ -75,6 +75,37 @@
 		}
 		echo "{\"c\":[{\"v\":\"Basico\",\"f\":null},{\"v\":" . $basico . ",\"f\":null}]},{\"c\":[{\"v\":\"Intermediario\",\"f\":null},{\"v\":" . $intermediario . ",\"f\":null}]},{\"c\":[{\"v\":\"Avancado\",\"f\":null},{\"v\":" . $avancado . ",\"f\":null}]}";
 	}
+
+	// tem_filhos
+	if($q == "tem_filhos"){
+		while($row = pg_fetch_array($result)){
+			$tem_filhos++;
+
+			if($row['temFilhos'] == "sim"){
+				$sim++;
+			} else {
+				$nao++;
+			}
+		}
+		echo "{\"c\":[{\"v\":\"Sim\",\"f\":null},{\"v\":" . $sim . ",\"f\":null}]},{\"c\":[{\"v\":\"Nao\",\"f\":null},{\"v\":" . $nao . ",\"f\":null}]}";
+	}
+
+	// locomocao
+	if($q == "locomocao"){
+		while($row = pg_fetch_array($result)){
+			$locomocao++;
+
+			if($row['locomocao'] == "proprio"){
+				$proprio++;
+			} elseif($row['locomocao'] == "semconducao"){
+				$semconducao++;
+			} elseif($row['locomocao'] == "coletivo"){
+				$coletivo++;
+			}
+		}
+		echo "{\"c\":[{\"v\":\"Proprio\",\"f\":null},{\"v\":" . $proprio . ",\"f\":null}]},{\"c\":[{\"v\":\"Sem Conducao\",\"f\":null},{\"v\":" . $semconducao . ",\"f\":null}]},{\"c\":[{\"v\":\"Coletivo\",\"f\":null},{\"v\":" . $coletivo . ",\"f\":null}]}";
+	}
+
 	echo " ] }";
 	pg_close($con);
 ?>

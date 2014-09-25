@@ -35,7 +35,7 @@
 		</script>
 	</head>
 
-	<body background="Elegant_Background-8.jpg" background-size="cover">
+	<body background="Elegant_Background-8.jpg">
 		<div id="header">
 			<form>
 				<select name="users" onchange="drawChart(this.value)">
@@ -44,6 +44,8 @@
 					<option value="periodo">Periodo</option>
 					<option value="estado_civil">Estado Civil</option>
 					<option value="nivel_informatica">Nivel de Informatica</option>
+					<option value="tem_filhos">Filhos</option>
+					<option value="locomocao">Locomocao</option>
 				</select>
 			</form>
 		</div>
