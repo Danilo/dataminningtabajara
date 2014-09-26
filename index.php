@@ -46,6 +46,11 @@
 					<option value="nivel_informatica">Nivel de Informatica</option>
 					<option value="tem_filhos">Filhos</option>
 					<option value="locomocao">Locomocao</option>
+					<option value="reside_em_franca">Reside em Franca</option>
+					<option value="deficiencia">Deficiencia</option>
+					<option value="domicilio">Domicilio</option>
+					<option value="faixa_etaria">Faixa Etaria</option>
+					<option value="quantidade_de_operadoras">Operadoras</option>
 				</select>
 			</form>
 		</div>

@@ -129,6 +129,106 @@
 		}
 	}
 
+	// reside_em_franca
+	if($q == "reside_em_franca"){
+		$sql_query = "SELECT \"raAluno\", \"municipio\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Municipio\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['municipio'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['municipio'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
+	// deficiencia
+	if($q == "deficiencia"){
+		$sql_query = "SELECT \"raAluno\", \"deficiencia\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Deficiencia\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['deficiencia'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['deficiencia'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
+	// deficiencia
+	if($q == "domicilio"){
+		$sql_query = "SELECT \"raAluno\", \"domicilio\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Domicilio\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['domicilio'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['domicilio'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
+	// quantidade_de_operadoras
+	if($q == "quantidade_de_operadoras"){
+		$sql_query = "SELECT \"raAluno\", \"qtdOperadoras\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Quantidade de Operadoras\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['qtdOperadoras'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['qtdOperadoras'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
+	// faixa_etaria
+	if($q == "faixa_etaria"){
+		$sql_query = "SELECT \"id\", \"raAluno\", \"dataNascimento\" FROM questionario;";
+		$result = pg_query($con, $sql_query);
+
+		echo "{ \"cols\": [ {\"id\":\"\",\"label\":\"RA Aluno\",\"pattern\":\"\",\"type\":\"string\"},{\"id\":\"\",\"label\":\"Data de Nascimento\",\"pattern\":\"\",\"type\":\"string\"}], \"rows\": [ ";
+
+		$total_rows = pg_num_rows($result);
+
+		$row_num = 0;
+		while($row = pg_fetch_array($result)){
+			$row_num++;
+			if ($row_num == $total_rows){
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['dataNascimento'] . "\",\"f\":null}]}";
+			} else {
+				echo "{\"c\":[{\"v\":\"" . $row['raAluno'] . "\",\"f\":null},{\"v\":\"" . $row['dataNascimento'] . "\",\"f\":null}]}, ";
+			}
+		}
+	}
+
 	echo " ] }";
 	pg_close($con);
 ?>
